@@ -1,0 +1,8 @@
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+mat-form-field {
+    display: block;
+    width: 200px;
+    margin: auto;
+}

@@ -1,0 +1,28 @@
+table {
+    width: 90%;
+}
+
+table td {
+    border-bottom: 0.5px solid black;
+}
+
+table th {
+    border-bottom: 0.5px solid black;
+}
+
+table th {
+    text-align: center;
+}
+
+#gauche {
+    border-left: 1px solid black;
+}
+
+#droite {
+    border-right: 1px solid black;
+}
+
+.mat-column-select {
+    overflow: initial;
+  }
+

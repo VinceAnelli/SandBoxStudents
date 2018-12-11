@@ -1,0 +1,17 @@
+<div *ngIf="student">
+  <h2>{{student.firstname}} {{student.lastname}} Details</h2>
+  <div class="idEtud"><span>id: </span>{{student.id}}</div>
+  <div> 
+      <form name="studentForm" (ngSubmit)="onSubmit()" [formGroup]="studentForm" novalidate>
+    <app-gfi-input name="firstname" typeChamp='Prénom' [hideRequiredMarker]="true" required></app-gfi-input>       
+    <app-gfi-input name="lastname" typeChamp='Nom' [hideRequiredMarker]="true" required></app-gfi-input>       
+      <app-gfi-input name="age" typeChamp='Age' [hideRequiredMarker]="true" required></app-gfi-input>       
+      <app-gfi-input name="sector" typeChamp='Secteur' [hideRequiredMarker]="true" required></app-gfi-input>    
+      <br> <button mat-raised-button type="submit" [disabled]="!studentForm.valid" >Sauvegarder</button>
+    </form>
+     </div>
+</div>
+<br>
+<br>
+<button mat-raised-button (click)="delete(student)">Delete</button>
+<button mat-raised-button (click)="goBack()">go back</button>

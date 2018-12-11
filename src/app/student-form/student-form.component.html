@@ -1,0 +1,89 @@
+<div>
+    <div><h2>Ajouter un Étudiant</h2></div>
+    <div >
+        <form (ngSubmit)="onSubmit()" [formGroup]="studentForm">
+                <app-gfi-input name="firstname" typeChamp='Prénom' [hideRequiredMarker]="false"></app-gfi-input>            
+                <app-gfi-input name="lastname" typeChamp='Nom' [hideRequiredMarker]="false"></app-gfi-input>
+                <app-gfi-input name="age" typeChamp='Age' [hideRequiredMarker]="false"></app-gfi-input>
+                <app-gfi-input name="sector" typeChamp='Secteur' [hideRequiredMarker]="false"></app-gfi-input>
+        <br> <button mat-raised-button type="submit" [disabled]="!studentForm.valid || studentForm.pristine" >Ajouter</button>
+</form>
+  </div>
+    <button mat-raised-button (click)="goBack()">Retour</button>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
+</div>
+
+
+       <!--      <app-gfi-input ngDefaultControl nameFormControl="firstname" typeChamp='Prénom' [hideRequiredMarker]="false"></app-gfi-input>            
+              <app-gfi-input ngDefaultControl nameFormControl="lastname" typeChamp='Nom'  [hideRequiredMarker]="false"></app-gfi-input>
+              <app-gfi-input ngDefaultControl nameFormControl="age"  typeChamp='Age'  [hideRequiredMarker]="false"></app-gfi-input>
+              <app-gfi-input ngDefaultControl nameFormControl="sector" typeChamp='Secteur' [hideRequiredMarker]="false"></app-gfi-input>  --> 
+        <!--    <form name="studentForm" (ngSubmit)="onSubmit()" [formGroup]="studentForm" novalidate>
+            <mat-form-field appearance="outline">
+            <mat-label for="prenom">Prénom:</mat-label>
+                <input matInput formControlName="firstname" name="prenom" id="prenom"  required >
+            <mat-error>
+                Prénom obligatoire
+            </mat-error>
+            </mat-form-field> 
+    <mat-form-field appearance="outline">
+                <mat-label for="Nom">Nom:</mat-label>
+                    <input matInput type="text" formControlName="lastname" name="Nom" id="Nom" required>
+                <mat-error>
+                    Nom obligatoire
+                </mat-error>
+    </mat-form-field> 
+    <mat-form-field appearance="outline">
+            <mat-label for ="Age">Age:</mat-label>
+                <input matInput type="number" formControlName="age" name="Age" id="Age" required>                   
+            <mat-error>
+                Âge obligatoire
+            </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+            <mat-label for="Secteur">Secteur:</mat-label>
+                <input matInput type="text" formControlName="sector" name="Secteur" id="Secteur" required>
+            <mat-error>
+                Secteur obligatoire
+            </mat-error>
+    </mat-form-field> -->
+
+
+
+
+
+  
+
+ <!-- 
+<mat-form-field appearance="outline">
+                    <mat-label for="prenom">Prénom:</mat-label>
+                        <input matInput [(ngModel)]="student.firstname" name="prenom" id="prenom"   required #prenom="ngModel">
+                    <mat-error>
+                        Prénom obligatoire
+                    </mat-error>
+            </mat-form-field> 
+
+            <mat-form-field appearance="outline">
+                        <mat-label for="Nom">Nom:</mat-label>
+                            <input matInput type="text" [(ngModel)]="student.lastname" name="Nom" id="Nom"   required #Nom="ngModel">
+                        <mat-error>
+                            Nom obligatoire
+                        </mat-error>
+            </mat-form-field> 
+            <mat-form-field appearance="outline">
+                    <mat-label for ="Age">Age:</mat-label>
+                        <input matInput type="number" [(ngModel)]="student.age" name="Age" id="Age"   required #Age="ngModel">                   
+                    <mat-error>
+                        Âge obligatoire
+                    </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                    <mat-label for="Secteur">Secteur:</mat-label>
+                        <input matInput type="text" [(ngModel)]="student.sector" name="Secteur" id="Secteur"   required #Secteur="ngModel">
+                    <mat-error>
+                        Secteur obligatoire
+                    </mat-error>
+            </mat-form-field>
+
+
+ -->
