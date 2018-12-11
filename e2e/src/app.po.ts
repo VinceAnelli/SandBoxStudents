@@ -5,7 +5,18 @@ export class AppPage {
     return browser.get('/');
   }
 
-  getTitleText() {
-    return element(by.css('app-root h1')).getText();
+  getParagraphText() {
+    return element(by.css('app-root a')).getText();
+  }
+
+  getTitle() {
+    return browser.getTitle();
+  }
+
+  getH2() {
+    return element(by.css('app-root h2')).getText();
+  }
+  getField() {
+    return element.all(by.css('app-root td')).map(e => e.getText());
   }
 }
