@@ -1,0 +1,31 @@
+.border-bottom(@radius,@sens) {
+  border-@{sens} : @radius*1px solid black;
+}
+
+table {
+  width: 90%;
+}
+
+
+table td {
+  .border-bottom(0.5,bottom);
+}
+
+table th {
+.border-bottom(0.5,bottom);}
+
+table th {
+  text-align: center;
+}
+
+#gauche {
+  .border-bottom(0.5,left);;
+}
+
+#droite {
+  .border-bottom(0.5,right);;
+}
+
+.mat-column-select {
+  overflow: initial;
+}
