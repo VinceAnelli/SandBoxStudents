@@ -1,11 +1,10 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
-import { Student, HasId } from '../student';
-import { StudentService } from '../student.service';
-import { SelectionModel } from '@angular/cdk/collections';
-import { MatTableDataSource } from '@angular/material';
-import { MatTable } from '@angular/material';
-import { Observable, forkJoin } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {HasId, Student} from '../student';
+import {StudentService} from '../student.service';
+import {SelectionModel} from '@angular/cdk/collections';
+import {MatTable, MatTableDataSource} from '@angular/material';
+import {forkJoin, Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-students',

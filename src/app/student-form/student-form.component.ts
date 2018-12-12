@@ -1,10 +1,10 @@
-import { Component, OnInit, Input, ValueProvider, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
-import { StudentService } from '../student.service';
-import { ActivatedRoute } from '@angular/router';
-import { Location} from '@angular/common';
-import { Student } from '../student';
-import { GfiInputComponent } from '../gfi-input/gfi-input.component';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {StudentService} from '../student.service';
+import {ActivatedRoute} from '@angular/router';
+import {Location} from '@angular/common';
+import {Student} from '../student';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+
 @Component({
   selector: 'app-student-form',
   templateUrl: './student-form.component.html',

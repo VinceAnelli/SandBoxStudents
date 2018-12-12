@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { GfiInputComponent } from './gfi-input.component';
+import {GfiInputComponent} from './gfi-input.component';
 
 describe('GfiInputComponent', () => {
   let component: GfiInputComponent;

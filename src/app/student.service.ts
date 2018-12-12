@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
-import { Student } from './student';
-import { Observable, of, observable } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-import { Response } from '@angular/http';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Student} from './student';
+import {Observable, of} from 'rxjs';
+import {catchError} from 'rxjs/operators';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'

@@ -1,4 +1,4 @@
-import { browser, by, element } from 'protractor';
+import {browser, by, element} from 'protractor';
 
 export class AppPage {
   navigateTo() {
@@ -16,7 +16,10 @@ export class AppPage {
   getH2() {
     return element(by.css('app-root h2')).getText();
   }
+
   getField() {
     return element.all(by.css('app-root td')).map(e => e.getText());
   }
+
+
 }

@@ -1,17 +1,12 @@
-import { async, ComponentFixture, TestBed, getTestBed } from '@angular/core/testing';
-import { Student } from '../student';
-import { StudentService } from '../student.service';
-import { StudentsComponent } from './students.component';
-import { element } from '@angular/core/src/render3/instructions';
-import { By } from '@angular/platform-browser';
-import { AppModule } from '../app.module';
-import { CommonModule, APP_BASE_HREF } from '@angular/common';
-import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
-import { AppRoutingModule } from '../app-routing.module';
-import { StudentFormComponent } from '../student-form/student-form.component';
-import { StudentsDetailComponent } from '../students-detail/students-detail.component';
-import { ComponentFixtureAutoDetect } from '@angular/core/testing';
-import { of, Observable } from 'rxjs';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {Student} from '../student';
+import {StudentService} from '../student.service';
+import {StudentsComponent} from './students.component';
+import {By} from '@angular/platform-browser';
+import {AppModule} from '../app.module';
+import {APP_BASE_HREF} from '@angular/common';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {Observable, of} from 'rxjs';
 
 
 export class FakeMockUserService extends StudentService {

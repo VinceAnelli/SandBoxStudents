@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormControl, ControlContainer  } from '@angular/forms';
+import {Component, Input, OnInit} from '@angular/core';
+import {ControlContainer, FormControl, FormGroup} from '@angular/forms';
+
 @Component({
   selector: 'app-gfi-input',
   templateUrl: './gfi-input.component.html',

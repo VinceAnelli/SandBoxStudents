@@ -1,11 +1,9 @@
-import {
-  async, inject, TestBed, getTestBed
-} from '@angular/core/testing';
-import { Student } from './student';
-import { StudentService } from './student.service';
-import { HttpClient } from '@angular/common/http';
+import {getTestBed, inject, TestBed} from '@angular/core/testing';
+import {Student} from './student';
+import {StudentService} from './student.service';
+import {HttpClient} from '@angular/common/http';
 
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
 describe('StudentService', () => {
   let injector: TestBed;
