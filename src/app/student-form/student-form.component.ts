@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {StudentService} from '../student.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Location} from '@angular/common';
 import {Student} from '../student';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
@@ -18,7 +18,7 @@ export class StudentFormComponent implements OnInit {
 
   constructor(private studentService: StudentService,
     private route: ActivatedRoute,
-    private location: Location,
+    private router: Router,
      private formBuilder: FormBuilder) {
      this.studentForm = this.createFormGroupWithBuilder();
     }
@@ -26,7 +26,7 @@ export class StudentFormComponent implements OnInit {
   ngOnInit() {}
 
   goBack(): void {
-    this.location.back();
+    this.router.navigateByUrl('/');
   }
 
   onSubmit(): void {
