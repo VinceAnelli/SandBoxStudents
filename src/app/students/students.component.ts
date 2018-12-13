@@ -2,19 +2,23 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {HasId, Student} from '../student';
 import {StudentService} from '../student.service';
 import {SelectionModel} from '@angular/cdk/collections';
-import {MatTable, MatTableDataSource} from '@angular/material';
+import {MatDialog, MatDialogConfig, MatTable, MatTableDataSource} from '@angular/material';
 import {forkJoin, Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
+import {StudentsDetailComponent} from '../students-detail/students-detail.component';
 
 @Component({
   selector: 'app-students',
   templateUrl: './students.component.html',
-  styleUrls: ['./students.component.css']
+  styleUrls: ['./students.component.less']
 })
 export class StudentsComponent implements OnInit {
   @ViewChild(MatTable) table: MatTable<any>;
   student: Student;
-  constructor(private studentservice: StudentService) { }
+
+  constructor(private studentservice: StudentService,
+              private dialog: MatDialog) { }
+
   dataSource: MatTableDataSource<Student>;
   displayedColumns: string[] = ['Select', 'Id', 'firstname', 'lastname', 'edit'];
   selection = new SelectionModel<Student>(true, []);
@@ -22,6 +26,24 @@ export class StudentsComponent implements OnInit {
 
   ngOnInit() {
     this.getStudents();
+  }
+
+  openDialog(student: Student): Observable<void> {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+      student: student
+    };
+    this.dialog.open(StudentsDetailComponent, dialogConfig);
+    return this.dialog._afterAllClosed;
+
+  }
+
+    dialogOpen(student: Student) {
+      this.openDialog(student).subscribe(result => {
+        this.getStudents();
+      });
   }
 
   isAllSelected() {

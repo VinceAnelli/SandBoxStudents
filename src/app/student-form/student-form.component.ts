@@ -1,29 +1,30 @@
 import {Component, OnInit} from '@angular/core';
 import {StudentService} from '../student.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Location} from '@angular/common';
 import {Student} from '../student';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AppMaterialModule} from '../app-material/app-material.module';
+import {MatDialog, MatDialogConfig} from '@angular/material';
 
 @Component({
   selector: 'app-student-form',
   templateUrl: './student-form.component.html',
-  styleUrls: ['./student-form.component.css']
+  styleUrls: ['./student-form.component.less']
 })
 export class StudentFormComponent implements OnInit {
   student: Student;
   studentForm: FormGroup;
   public loading = false;
 
-
   constructor(private studentService: StudentService,
     private route: ActivatedRoute,
     private router: Router,
-     private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder) {
      this.studentForm = this.createFormGroupWithBuilder();
     }
-
   ngOnInit() {}
+
+
 
   goBack(): void {
     this.router.navigateByUrl('/');
@@ -53,4 +54,5 @@ export class StudentFormComponent implements OnInit {
       sector: ['', Validators.required],
     });
   }
+
 }

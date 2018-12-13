@@ -2,19 +2,19 @@ table {
   width: 90%;
 }
 table td {
-  border-bottom: 0.5px solid black;
+  border-bottom: 0.5px solid red;
 }
 table th {
-  border-bottom: 0.5px solid black;
+  border-bottom: 0.5px solid red;
 }
 table th {
   text-align: center;
 }
 #gauche {
-  border-left: 0.5px solid black;
+  border-left: 0.5px solid red;
 }
 #droite {
-  border-right: 0.5px solid black;
+  border-right: 0.5px solid red;
 }
 .mat-column-select {
   overflow: initial;

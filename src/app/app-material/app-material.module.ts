@@ -10,7 +10,8 @@ import {
   MatPaginatorModule,
   MatSidenavModule,
   MatTableModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatDialogModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -23,6 +24,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatTableModule,
     MatCheckboxModule,
     MatPaginatorModule,
+    MatDialogModule
   ],
   declarations: [],
   exports: [
@@ -32,6 +34,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatTableModule,
     MatCheckboxModule,
     MatPaginatorModule,
+    MatDialogModule
   ]
 })
 export class AppMaterialModule { }
