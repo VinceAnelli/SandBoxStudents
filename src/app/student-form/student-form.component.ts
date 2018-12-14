@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Student} from '../student';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {AppMaterialModule} from '../app-material/app-material.module';
-import {MatDialog, MatDialogConfig} from '@angular/material';
+import {MatDialog, MatDialogConfig, MatDialogRef, MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-student-form',
@@ -19,22 +19,26 @@ export class StudentFormComponent implements OnInit {
   constructor(private studentService: StudentService,
     private route: ActivatedRoute,
     private router: Router,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+              private dialogRef: MatDialogRef<StudentFormComponent>,
+              private snackBar: MatSnackBar) {
      this.studentForm = this.createFormGroupWithBuilder();
     }
   ngOnInit() {}
 
 
 
-  goBack(): void {
-    this.router.navigateByUrl('/');
+  close() {
+    this.dialogRef.close();
+    return this.dialogRef.afterClosed();
   }
 
   onSubmit(): void {
     this.loading = true;
     const result: Student = Object.assign({}, this.studentForm.value);
     this.studentService.createStudents(result).subscribe(_ => this.loading = false);
-    this.goBack();
+    this.close();
+    this.snackBar.open('Étudiant Ajouté', 'X', {duration: 3000});
   }
 
   createFormGroup() {

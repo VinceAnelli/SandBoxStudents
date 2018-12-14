@@ -5,8 +5,7 @@
     fxLayout.lt-md="column"
     fxLayoutAlign.lt-md="stretch" 
    >
-        <div fxFlex="auto" fxFlex.lt-md="100%" ><a routerLink="/studentForm" routerLinkActive="router-link-active"> Ajouter un étudiants</a></div>
-        <div fxFlex="auto" fxFlex.lt-md="100%" ><a routerLink="/students" routerLinkActive="router-link-active"> Liste des étudiants</a> </div>
+        <div fxFlex="auto" fxFlex.lt-md="100%" ><a (click)="dialogOpen()"> Ajouter un étudiants</a></div>
     </nav>
     </div>
 <div class="contenu"><router-outlet></router-outlet></div>

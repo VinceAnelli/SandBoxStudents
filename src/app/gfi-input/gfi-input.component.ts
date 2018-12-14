@@ -12,7 +12,7 @@ export class GfiInputComponent implements OnInit {
   formGroup: FormGroup;
   formControl: FormControl;
   @Input() name: string;
-
+  type: string;
 
   propagateChange = (_: any) => {};
 
@@ -28,6 +28,11 @@ export class GfiInputComponent implements OnInit {
     this.formControl = <FormControl>this.formGroup.get(this.name);
     if (!this.formControl) {
       throw Error('Can\'t find FormControl ' + this.name);
+    }
+    if (this.typeChamp === 'Age') {
+      this.type = 'number';
+    } else {
+      this.type = 'text';
     }
   }
 }

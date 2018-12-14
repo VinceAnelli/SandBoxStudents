@@ -1,6 +1,6 @@
 <mat-form-field appearance="outline" [hideRequiredMarker]="hideRequiredMarker" [formGroup]="formGroup">
   <mat-label>{{typeChamp}}:</mat-label>
-    <input matInput [formControlName]="name" [name]="name" id={{typeChamp}} class="form-control" required>
+    <input matInput [formControlName]="name" [name]="name" id={{typeChamp}} class="form-control" required type={{type}} >
   <mat-error>
       {{typeChamp}} obligatoire
   </mat-error>

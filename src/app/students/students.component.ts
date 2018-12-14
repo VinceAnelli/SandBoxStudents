@@ -2,10 +2,11 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {HasId, Student} from '../student';
 import {StudentService} from '../student.service';
 import {SelectionModel} from '@angular/cdk/collections';
-import {MatDialog, MatDialogConfig, MatTable, MatTableDataSource} from '@angular/material';
 import {forkJoin, Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {StudentsDetailComponent} from '../students-detail/students-detail.component';
+import {MatDialog, MatDialogConfig, MatTable, MatTableDataSource} from '@angular/material';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-students',
@@ -17,7 +18,9 @@ export class StudentsComponent implements OnInit {
   student: Student;
 
   constructor(private studentservice: StudentService,
-              private dialog: MatDialog) { }
+              private dialog: MatDialog,
+              private snackBar: MatSnackBar,) {
+  }
 
   dataSource: MatTableDataSource<Student>;
   displayedColumns: string[] = ['Select', 'Id', 'firstname', 'lastname', 'edit'];
@@ -40,10 +43,11 @@ export class StudentsComponent implements OnInit {
 
   }
 
-    dialogOpen(student: Student) {
-      this.openDialog(student).subscribe(result => {
-        this.getStudents();
-      });
+  dialogOpen(student: Student) {
+    this.openDialog(student).subscribe(result => {
+      this.getStudents();
+      this.selection.clear();
+    });
   }
 
   isAllSelected() {
@@ -54,13 +58,14 @@ export class StudentsComponent implements OnInit {
 
   masterToggle() {
     this.isAllSelected() ?
-        this.selection.clear() :
-        this.dataSource.data.forEach(row => this.selection.select(row));
+      this.selection.clear() :
+      this.dataSource.data.forEach(row => this.selection.select(row));
   }
 
   getStudents(): void {
     this.loading = true;
-    this.studentservice.getStudents().subscribe(students => {this.dataSource = new MatTableDataSource<Student>(students);
+    this.studentservice.getStudents().subscribe(students => {
+      this.dataSource = new MatTableDataSource<Student>(students);
       this.loading = false;
     });
   }
@@ -74,21 +79,22 @@ export class StudentsComponent implements OnInit {
         break;
       }
     }
+    this.snackBar.open('Étudiant supprimé', 'X', {duration: 3000});
   }
 
   deleteStudents() {
     if (confirm('Êtes-vous sûr de vouloir supprimer ce(s) étudiant(s)?')) {
-    const obsTable: Observable<any>[] = [];
-    this.selection.selected.forEach(item => {
-      this.deleteItem(this.dataSource.data, item);
-      obsTable.push(this.studentservice.deleteStudent(item).pipe(
-        tap(() => console.log('étudiant supprimé : ' + item.id))
-      ));
-    // this.studentservice.deleteStudent(item).subscribe(() =>  console.log('student supprimé : ' + item.id));
-    // this.dataSource = new MatTableDataSource<Student>(this.dataSource.data);
-    });
-    forkJoin(obsTable).subscribe(() => console.log('tous les étudiants sont supprimés'));
-  }
+      const obsTable: Observable<any>[] = [];
+      this.selection.selected.forEach(item => {
+        this.deleteItem(this.dataSource.data, item);
+        obsTable.push(this.studentservice.deleteStudent(item).pipe(
+          tap(() => console.log('étudiant supprimé : ' + item.id))
+        ));
+        // this.studentservice.deleteStudent(item).subscribe(() =>  console.log('student supprimé : ' + item.id));
+        // this.dataSource = new MatTableDataSource<Student>(this.dataSource.data);
+      });
+      forkJoin(obsTable).subscribe(() => console.log('tous les étudiants sont supprimés'));
+    }
     // this.studentservice.deleteStudent(item).subscribe(() =>  console.log('student supprimé'));
     this.selection = new SelectionModel<Student>(true, []);
     console.log('rendu du tableau');

@@ -9,7 +9,7 @@
         <br> <button mat-raised-button type="submit" [disabled]="!studentForm.valid || studentForm.pristine" >Ajouter</button>
 </form>
   </div>
-    <button mat-raised-button (click)="goBack()">Retour</button>
+    <button mat-raised-button (click)="close()">Retour</button>
     <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
 </div>
 
