@@ -36,7 +36,7 @@
         <ng-container matColumnDef="edit">
             <th id="droite" mat-header-cell *matHeaderCellDef> Editer </th>
             <td id="droite" mat-cell *matCellDef="let student"> <button class="etudiant" (click)="dialogOpen(student)">
-            <img src="../../assets/edit.png" width="30" height="30"> </button> </td>
+            <!--<img src="../../assets/edit.png" width="30" height="30">--><fa-icon [icon]="faEdit" size="2x"></fa-icon> </button> </td>
         </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -44,5 +44,5 @@
 </table>
 <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
 </div>
-<button mat-raised-button id="buttonDelete" (click)="deleteStudents()">Delete</button>
+<button mat-raised-button id="buttonDelete" (click)="deleteStudents()"><fa-icon [icon]="faTrash" size="2x"></fa-icon></button>
 

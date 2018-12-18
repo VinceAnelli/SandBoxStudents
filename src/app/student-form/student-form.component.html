@@ -6,7 +6,7 @@
                 <app-gfi-input name="lastname" typeChamp='Nom' [hideRequiredMarker]="false"></app-gfi-input>
                 <app-gfi-input name="age" typeChamp='Age' [hideRequiredMarker]="false"></app-gfi-input>
                 <app-gfi-input name="sector" typeChamp='Secteur' [hideRequiredMarker]="false"></app-gfi-input>
-        <br> <button mat-raised-button type="submit" [disabled]="!studentForm.valid || studentForm.pristine" >Ajouter</button>
+        <br> <button mat-raised-button color="accent" type="submit" [disabled]="!studentForm.valid || studentForm.pristine" >Ajouter</button>
 </form>
   </div>
     <button mat-raised-button (click)="close()">Retour</button>

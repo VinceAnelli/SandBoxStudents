@@ -17,10 +17,6 @@ export class AppComponent {
   constructor(private dialog: MatDialog,
               private location: Location,
               ) {}
-  public loading = false;
-
-
-
   openDialog(student: Student): Observable<void> {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
@@ -32,7 +28,8 @@ export class AppComponent {
 
   dialogOpen(student: Student) {
     this.openDialog(student).subscribe(result => {
-      this.location.go('');
+      // console.log('redirection vers ""');
+      // this.location.go('');
     });
   }
 }

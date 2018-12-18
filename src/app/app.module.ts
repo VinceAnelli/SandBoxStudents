@@ -15,7 +15,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import 'hammerjs';
 import {GfiInputComponent} from './gfi-input/gfi-input.component';
 import {NgxLoadingModule} from 'ngx-loading';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +35,8 @@ import {NgxLoadingModule} from 'ngx-loading';
     AppMaterialModule,
     FlexLayoutModule,
     ReactiveFormsModule,
-    NgxLoadingModule.forRoot({})
+    NgxLoadingModule.forRoot({}),
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

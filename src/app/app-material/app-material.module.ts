@@ -12,7 +12,6 @@ import {
   MatTableModule,
   MatToolbarModule,
   MatDialogModule,
-  MatDialog, MatDialogConfig, MatTable, MatTableDataSource,
   MatSnackBarModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';

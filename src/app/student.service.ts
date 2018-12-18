@@ -1,13 +1,16 @@
-import {Injectable} from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {Student} from './student';
-import {Observable, of} from 'rxjs';
-import {catchError} from 'rxjs/operators';
+import {BehaviorSubject, Observable, of} from 'rxjs';
+import {catchError, tap} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StudentService {
+
+  public studentCreated: EventEmitter<boolean> = new EventEmitter();
+
   readonly studentsUrl = 'api/students';
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -27,7 +30,10 @@ export class StudentService {
   }
 
   createStudents(student: Student): Observable<Student> {
-    return this.http.post<Student>(this.studentsUrl, student).pipe(catchError(this.handleError<Student>('add Student')));
+    return this.http.post<Student>(this.studentsUrl, student).pipe(
+      catchError(this.handleError<Student>('add Student')),
+      tap(() => this.studentCreated.emit(true)
+      ));
   }
 
   updateStudent(student: Student): Observable<any> {

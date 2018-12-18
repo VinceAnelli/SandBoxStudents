@@ -1,25 +1,30 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {HasId, Student} from '../student';
 import {StudentService} from '../student.service';
 import {SelectionModel} from '@angular/cdk/collections';
-import {forkJoin, Observable} from 'rxjs';
+import {forkJoin, Observable, Subscription} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {StudentsDetailComponent} from '../students-detail/students-detail.component';
 import {MatDialog, MatDialogConfig, MatTable, MatTableDataSource} from '@angular/material';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {faEdit, faTrash} from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-students',
   templateUrl: './students.component.html',
   styleUrls: ['./students.component.less']
 })
-export class StudentsComponent implements OnInit {
+export class StudentsComponent implements OnInit, OnDestroy {
   @ViewChild(MatTable) table: MatTable<any>;
   student: Student;
+  faEdit = faEdit;
+  faTrash = faTrash;
+  private studentCreatedSub: Subscription;
 
   constructor(private studentservice: StudentService,
               private dialog: MatDialog,
-              private snackBar: MatSnackBar,) {
+              private snackBar: MatSnackBar) {
   }
 
   dataSource: MatTableDataSource<Student>;
@@ -29,6 +34,13 @@ export class StudentsComponent implements OnInit {
 
   ngOnInit() {
     this.getStudents();
+    this.studentCreatedSub = this.studentservice.studentCreated.subscribe(() => this.getStudents());
+  }
+
+  ngOnDestroy(): void {
+    if (this.studentCreatedSub) {
+      this.studentCreatedSub.unsubscribe();
+    }
   }
 
   openDialog(student: Student): Observable<void> {
@@ -38,13 +50,11 @@ export class StudentsComponent implements OnInit {
     dialogConfig.data = {
       student: student
     };
-    this.dialog.open(StudentsDetailComponent, dialogConfig);
-    return this.dialog._afterAllClosed;
-
+    return this.dialog.open(StudentsDetailComponent, dialogConfig).afterClosed();
   }
 
   dialogOpen(student: Student) {
-    this.openDialog(student).subscribe(result => {
+    this.openDialog(student).subscribe(() => {
       this.getStudents();
       this.selection.clear();
     });

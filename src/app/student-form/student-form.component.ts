@@ -3,8 +3,8 @@ import {StudentService} from '../student.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Student} from '../student';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {AppMaterialModule} from '../app-material/app-material.module';
 import {MatDialog, MatDialogConfig, MatDialogRef, MatSnackBar} from '@angular/material';
+import {take} from 'rxjs/operators';
 
 @Component({
   selector: 'app-student-form',
@@ -36,7 +36,8 @@ export class StudentFormComponent implements OnInit {
   onSubmit(): void {
     this.loading = true;
     const result: Student = Object.assign({}, this.studentForm.value);
-    this.studentService.createStudents(result).subscribe(_ => this.loading = false);
+    console.log(result);
+    this.studentService.createStudents(result).subscribe(null, null, () => this.loading = false);
     this.close();
     this.snackBar.open('Étudiant Ajouté', 'X', {duration: 3000});
   }
